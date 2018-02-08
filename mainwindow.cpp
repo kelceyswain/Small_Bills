@@ -160,76 +160,81 @@ void MainWindow::on_newDatabaseButton_clicked()
          * benificaryNotes varchar(256)
          ****************************************/
 
-        query.exec("create table receipts "
+        query.exec("DROP TABLE IF EXISTS receipts;");
+        query.exec("CREATE table receipts "
                    "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                   "repository int, "
-                   "enteredBy text, "
-                   "entryDate int, "
-                   "bundleRef text, "
-                   "itemNum int, "
-                   "entryNum int, "
-                   "docType int, "
-                   "docDesc int, "
-                   "consRequired int, "
-                   "consNotes text, "
-                   "allManuscript int, "
-                   "printedHeader int, "
-                   "containsImage int, "
-                   "year int, "
-                   "month int, "
-                   "day int, "
-                   "pounds int, "
-                   "shillings int, "
-                   "pence int, "
-                   "description text, "
-                   "commodityCatA int, "
-                   "commodityCatB int, "
-                   "paidToForename text, "
-                   "paidToSurname text, "
-                   "paidToJobA int, "
-                   "paidToJobB int, "
-                   "paidByForename text, "
-                   "paidBySurname text, "
-                   "paidByJobA int, "
-                   "paidByJobB int, "
-                   "isBenificiaryPerson int, "
-                   "benificiaryForename text, "
-                   "benicifiarySurname text, "
-                   "benificaryNotes text)"
+                   "repository INT, "
+                   "enteredBy TEXT, "
+                   "entryDate INT, "
+                   "bundleRef TEXT, "
+                   "itemNum INT, "
+                   "entryNum INT, "
+                   "docType INT, "
+                   "docDesc INT, "
+                   "consRequired INT, "
+                   "consNotes TEXT, "
+                   "allManuscript INT, "
+                   "prINTedHeader INT, "
+                   "containsImage INT, "
+                   "year INT, "
+                   "month INT, "
+                   "day INT, "
+                   "pounds INT, "
+                   "shillings INT, "
+                   "pence INT, "
+                   "description TEXT, "
+                   "commodityCatA INT, "
+                   "commodityCatB INT, "
+                   "paidToForename TEXT, "
+                   "paidToSurname TEXT, "
+                   "paidToJobA INT, "
+                   "paidToJobB INT, "
+                   "paidByForename TEXT, "
+                   "paidBySurname TEXT, "
+                   "paidByJobA INT, "
+                   "paidByJobB INT, "
+                   "isBenificiaryPerson INT, "
+                   "benificiaryForename TEXT, "
+                   "benicifiarySurname TEXT, "
+                   "benificaryNotes TEXT);"
                    );
         // Create repos table
-        query.exec("create table reposID (id int, repo text)");
-        query.exec("insert into reposID values(101, 'Cumberland')");
-        query.exec("insert into reposID values(102, 'East Sussex')");
-        query.exec("insert into reposID values(103, 'Staffordshire')");
+        query.exec("DROP TABLE IF EXISTS reposID;");
+        query.exec("CREATE TABLE reposID (id INT, repo TEXT);");
+        query.exec("INSERT INTO reposID values(101, 'Cumberland');");
+        query.exec("INSERT INTO reposID values(102, 'East Sussex');");
+        query.exec("INSERT INTO reposID values(103, 'Staffordshire');");
 
         // Create docType table
-        query.exec("create table docTypeID (id int, doc text)");
-        query.exec("insert into docTypeID values(101, 'Receipt')");
-        query.exec("insert into docTypeID values(102, 'Booklet')");
-        query.exec("insert into docTypeID values(103, 'Other')");
+        query.exec("DROP TABLE IF EXISTS docTypeID;");
+        query.exec("CREATE table docTypeID (id int, doc text);");
+        query.exec("INSERT into docTypeID values(101, 'Receipt');");
+        query.exec("INSERT into docTypeID values(102, 'Booklet');");
+        query.exec("INSERT into docTypeID values(103, 'Other');");
 
-        // Create docDesc table
-        query.exec("create table docDescID (id int, desc text)");
-        query.exec("insert into docDescID values(101, 'Paper')");
-        query.exec("insert into docDescID values(102, 'Card')");
-        query.exec("insert into docDescID values(103, 'Whatever')");
+        // CREATE docDesc table
+        query.exec("DROP TABLE IF EXISTS docDescID;");
+        query.exec("CREATE table docDescID (id int, desc text);");
+        query.exec("INSERT into docDescID values(101, 'Paper');");
+        query.exec("INSERT into docDescID values(102, 'Card');");
+        query.exec("INSERT into docDescID values(103, 'Whatever');");
 
-        // Create month table
-        query.exec("create table monthID (id int, mon text)");
-        query.exec("insert into monthID values(100, 'Unknown')");
-        query.exec("insert into monthID values(101, 'January')");
-        query.exec("insert into monthID values(102, 'February')");
-        query.exec("insert into monthID values(103, 'March')");
-        query.exec("insert into monthID values(104, 'April')");
-        query.exec("insert into monthID values(105, 'May')");
-        query.exec("insert into monthID values(106, 'June')");
-        query.exec("insert into monthID values(107, 'July')");
-        query.exec("insert into monthID values(108, 'August')");
-        query.exec("insert into monthID values(109, 'September')");
-        query.exec("insert into monthID values(110, 'October')");
-        query.exec("insert into monthID values(111, 'November')");
-        query.exec("insert into monthID values(112, 'December')");
+        // CREATE month table
+        query.exec("DROP TABLE IF EXISTS monthID;");
+        query.exec("CREATE table monthID (id int, mon text);");
+        query.exec("INSERT into monthID values(100, 'Unknown');");
+        query.exec("INSERT into monthID values(101, 'January');");
+        query.exec("INSERT into monthID values(102, 'February');");
+        query.exec("INSERT into monthID values(103, 'March');");
+        query.exec("INSERT into monthID values(104, 'April');");
+        query.exec("INSERT into monthID values(105, 'May');");
+        query.exec("INSERT into monthID values(106, 'June');");
+        query.exec("INSERT into monthID values(107, 'July');");
+        query.exec("INSERT into monthID values(108, 'August');");
+        query.exec("INSERT into monthID values(109, 'September');");
+        query.exec("INSERT into monthID values(110, 'October');");
+        query.exec("INSERT into monthID values(111, 'November');");
+        query.exec("INSERT into monthID values(112, 'December');");
 
         setupModel();
     }
