@@ -216,9 +216,9 @@ void MainWindow::on_newDatabaseButton_clicked()
         // CREATE docDesc table
         query.exec("DROP TABLE IF EXISTS docDescID;");
         query.exec("CREATE table docDescID (id int, desc text);");
-        query.exec("INSERT into docDescID values(100, 'other');");
-        query.exec("INSERT into docDescID values(102, 'single page');");
-        query.exec("INSERT into docDescID values(103, 'multi page');");
+        query.exec("INSERT into docDescID values(100, 'Other');");
+        query.exec("INSERT into docDescID values(102, 'Single page');");
+        query.exec("INSERT into docDescID values(103, 'Multi page');");
 
         // CREATE month table
         query.exec("DROP TABLE IF EXISTS monthID;");
