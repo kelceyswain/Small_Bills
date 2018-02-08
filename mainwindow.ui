@@ -241,7 +241,7 @@
             <item row="10" column="2">
              <widget class="QLineEdit" name="penceEdit">
               <property name="placeholderText">
-               <string>Pence (p)</string>
+               <string>Pence (d)</string>
               </property>
              </widget>
             </item>

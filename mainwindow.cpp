@@ -208,16 +208,17 @@ void MainWindow::on_newDatabaseButton_clicked()
         // Create docType table
         query.exec("DROP TABLE IF EXISTS docTypeID;");
         query.exec("CREATE table docTypeID (id int, doc text);");
-        query.exec("INSERT into docTypeID values(101, 'Receipt');");
-        query.exec("INSERT into docTypeID values(102, 'Booklet');");
-        query.exec("INSERT into docTypeID values(103, 'Other');");
+        query.exec("INSERT into docTypeID values(100, 'Other');");
+        query.exec("INSERT into docTypeID values(101, 'Overseer voucher');");
+        query.exec("INSERT into docTypeID values(102, 'Churchwarden voucher');");
+        query.exec("INSERT into docTypeID values(103, 'Settlement certificate');");
 
         // CREATE docDesc table
         query.exec("DROP TABLE IF EXISTS docDescID;");
         query.exec("CREATE table docDescID (id int, desc text);");
-        query.exec("INSERT into docDescID values(101, 'Paper');");
-        query.exec("INSERT into docDescID values(102, 'Card');");
-        query.exec("INSERT into docDescID values(103, 'Whatever');");
+        query.exec("INSERT into docDescID values(100, 'other');");
+        query.exec("INSERT into docDescID values(102, 'single page');");
+        query.exec("INSERT into docDescID values(103, 'multi page');");
 
         // CREATE month table
         query.exec("DROP TABLE IF EXISTS monthID;");
