@@ -197,7 +197,7 @@ void MainWindow::on_newDatabaseButton_clicked()
         query.exec("INSERT into monthID values(106, 'June');");
         query.exec("INSERT into monthID values(107, 'July');");
         query.exec("INSERT into monthID values(108, 'August');");
-        query.exec("INSERT into monthIDsetupModel values(109, 'September');");
+        query.exec("INSERT into monthID values(109, 'September');");
         query.exec("INSERT into monthID values(110, 'October');");
         query.exec("INSERT into monthID values(111, 'November');");
         query.exec("INSERT into monthID values(112, 'December');");
