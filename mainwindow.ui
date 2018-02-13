@@ -29,6 +29,9 @@
         <property name="enabled">
          <bool>false</bool>
         </property>
+        <property name="toolTip">
+         <string>Delete entry [Del]</string>
+        </property>
         <property name="text">
          <string>Delete entry</string>
         </property>
@@ -42,6 +45,9 @@
         <property name="enabled">
          <bool>false</bool>
         </property>
+        <property name="toolTip">
+         <string>New Entry [Ctrl+N]</string>
+        </property>
         <property name="text">
          <string>New entry</string>
         </property>
@@ -52,6 +58,9 @@
       </item>
       <item row="2" column="3" colspan="3">
        <widget class="QScrollArea" name="scrollArea">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="widgetResizable">
          <bool>true</bool>
         </property>
@@ -59,14 +68,78 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
-           <width>577</width>
-           <height>659</height>
+           <y>-13</y>
+           <width>557</width>
+           <height>672</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="1" column="0">
            <layout class="QGridLayout" name="gridLayout_3">
+            <item row="18" column="0" colspan="2">
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>Commodity or service general category:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="3">
+             <widget class="QLineEdit" name="fromJobCatBEdit">
+              <property name="toolTip">
+               <string>Occupation</string>
+              </property>
+              <property name="placeholderText">
+               <string>Occupation</string>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="0">
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>Paid to:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="3">
+             <widget class="QLineEdit" name="toJobCatBEdit">
+              <property name="toolTip">
+               <string>Occupation</string>
+              </property>
+              <property name="placeholderText">
+               <string>Occupation</string>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="0">
+             <widget class="QLineEdit" name="toForenameEdit">
+              <property name="toolTip">
+               <string>Forename</string>
+              </property>
+              <property name="placeholderText">
+               <string>Forename</string>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="2">
+             <widget class="QLineEdit" name="toJobCatAEdit">
+              <property name="toolTip">
+               <string>Sector</string>
+              </property>
+              <property name="placeholderText">
+               <string>Sector</string>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="1">
+             <widget class="QLineEdit" name="toSurnameEdit">
+              <property name="toolTip">
+               <string>Surname</string>
+              </property>
+              <property name="placeholderText">
+               <string>Surname</string>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="2">
              <widget class="QLabel" name="label_3">
               <property name="text">
@@ -79,6 +152,9 @@
             </item>
             <item row="3" column="1">
              <widget class="QLineEdit" name="entryNumEdit">
+              <property name="toolTip">
+               <string>Entry number</string>
+              </property>
               <property name="placeholderText">
                <string>Entry number</string>
               </property>
@@ -126,6 +202,9 @@
             </item>
             <item row="5" column="2" colspan="2">
              <widget class="QLineEdit" name="consNotesEdit">
+              <property name="toolTip">
+               <string>Conservation notes</string>
+              </property>
               <property name="placeholderText">
                <string>Conservation notes</string>
               </property>
@@ -147,15 +226,11 @@
             </item>
             <item row="9" column="0">
              <widget class="QLineEdit" name="yearEdit">
+              <property name="toolTip">
+               <string>Last visible date</string>
+              </property>
               <property name="placeholderText">
                <string>Year</string>
-              </property>
-             </widget>
-            </item>
-            <item row="18" column="2">
-             <widget class="QLineEdit" name="benifForenameEdit">
-              <property name="placeholderText">
-               <string>Forename if yes</string>
               </property>
              </widget>
             </item>
@@ -184,6 +259,9 @@
             </item>
             <item row="10" column="0">
              <widget class="QLineEdit" name="poundsEdit">
+              <property name="toolTip">
+               <string>Pounds (£)</string>
+              </property>
               <property name="placeholderText">
                <string>Pounds (£)</string>
               </property>
@@ -210,43 +288,22 @@
               </property>
              </widget>
             </item>
-            <item row="18" column="3">
-             <widget class="QLineEdit" name="benifSurnameEdit">
-              <property name="placeholderText">
-               <string>Surname if yes</string>
-              </property>
-             </widget>
-            </item>
-            <item row="14" column="0">
-             <widget class="QLabel" name="label_6">
-              <property name="text">
-               <string>Paid to:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="16" column="0">
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>Paid by:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="15" column="0">
-             <widget class="QLineEdit" name="toForenameEdit">
-              <property name="placeholderText">
-               <string>Forename</string>
-              </property>
-             </widget>
-            </item>
             <item row="10" column="2">
              <widget class="QLineEdit" name="penceEdit">
+              <property name="toolTip">
+               <string>Pence (d)</string>
+              </property>
               <property name="placeholderText">
                <string>Pence (d)</string>
               </property>
              </widget>
             </item>
             <item row="9" column="1">
-             <widget class="QComboBox" name="monthComboBox"/>
+             <widget class="QComboBox" name="monthComboBox">
+              <property name="toolTip">
+               <string>Last visible date</string>
+              </property>
+             </widget>
             </item>
             <item row="10" column="3">
              <widget class="QLineEdit" name="penceTotalEdit">
@@ -258,38 +315,17 @@
               </property>
              </widget>
             </item>
-            <item row="11" column="0" colspan="4">
+            <item row="19" column="0" colspan="4">
              <widget class="Line" name="line_5">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
-            <item row="15" column="1">
-             <widget class="QLineEdit" name="toSurnameEdit">
-              <property name="placeholderText">
-               <string>Surname</string>
-              </property>
-             </widget>
-            </item>
-            <item row="12" column="0" colspan="4">
+            <item row="20" column="0" colspan="4">
              <widget class="QPlainTextEdit" name="descriptionTextEdit">
               <property name="placeholderText">
                <string>Commodity or service description</string>
-              </property>
-             </widget>
-            </item>
-            <item row="13" column="0" colspan="2">
-             <widget class="QLabel" name="label_5">
-              <property name="text">
-               <string>Commodity or service general category:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="17" column="1">
-             <widget class="QLineEdit" name="fromSurnameEdit">
-              <property name="placeholderText">
-               <string>Surname</string>
               </property>
              </widget>
             </item>
@@ -298,6 +334,9 @@
             </item>
             <item row="10" column="1">
              <widget class="QLineEdit" name="shillingsEdit">
+              <property name="toolTip">
+               <string>Shillings (s)</string>
+              </property>
               <property name="placeholderText">
                <string>Shillings (s)</string>
               </property>
@@ -315,6 +354,9 @@
             </item>
             <item row="3" column="0">
              <widget class="QLineEdit" name="itemNumEdit">
+              <property name="toolTip">
+               <string>Item number</string>
+              </property>
               <property name="placeholderText">
                <string>Item number</string>
               </property>
@@ -323,15 +365,112 @@
             <item row="0" column="3">
              <widget class="QLineEdit" name="userEntryEdit"/>
             </item>
-            <item row="17" column="0">
+            <item row="1" column="1">
+             <widget class="QDateEdit" name="dateEntryEdit">
+              <property name="displayFormat">
+               <string>yyyy-MM-dd</string>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="2">
+             <widget class="QLineEdit" name="dayEdit">
+              <property name="toolTip">
+               <string>Last visible date</string>
+              </property>
+              <property name="placeholderText">
+               <string>Date</string>
+              </property>
+             </widget>
+            </item>
+            <item row="18" column="3">
+             <widget class="QLineEdit" name="commodCatBEdit">
+              <property name="toolTip">
+               <string>Specific</string>
+              </property>
+              <property name="placeholderText">
+               <string>Specific</string>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="1">
+             <widget class="QLineEdit" name="fromSurnameEdit">
+              <property name="toolTip">
+               <string>Surname</string>
+              </property>
+              <property name="placeholderText">
+               <string>Surname</string>
+              </property>
+             </widget>
+            </item>
+            <item row="18" column="2">
+             <widget class="QLineEdit" name="commodCatAEdit">
+              <property name="toolTip">
+               <string>General</string>
+              </property>
+              <property name="placeholderText">
+               <string>General</string>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="0">
              <widget class="QLineEdit" name="fromForenameEdit">
+              <property name="toolTip">
+               <string>Forename</string>
+              </property>
               <property name="placeholderText">
                <string>Forename</string>
               </property>
              </widget>
             </item>
-            <item row="19" column="0" colspan="4">
+            <item row="15" column="2">
+             <widget class="QLineEdit" name="fromJobCatAEdit">
+              <property name="toolTip">
+               <string>Sector</string>
+              </property>
+              <property name="placeholderText">
+               <string>Sector</string>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="0" colspan="2">
+             <widget class="QCheckBox" name="benifPersonBox">
+              <property name="text">
+               <string>Is benificiary a person?</string>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="3">
+             <widget class="QLineEdit" name="benifSurnameEdit">
+              <property name="toolTip">
+               <string>Surname</string>
+              </property>
+              <property name="placeholderText">
+               <string>Surname if yes</string>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="0">
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>Paid by:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="2">
+             <widget class="QLineEdit" name="benifForenameEdit">
+              <property name="toolTip">
+               <string>Forename</string>
+              </property>
+              <property name="placeholderText">
+               <string>Forename if yes</string>
+              </property>
+             </widget>
+            </item>
+            <item row="17" column="0" colspan="4">
              <widget class="QLineEdit" name="benifNotesEdit">
+              <property name="toolTip">
+               <string>Notes</string>
+              </property>
               <property name="readOnly">
                <bool>false</bool>
               </property>
@@ -340,66 +479,17 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
-             <widget class="QDateEdit" name="dateEntryEdit">
-              <property name="displayFormat">
-               <string>yyyy-MM-dd</string>
-              </property>
-             </widget>
-            </item>
-            <item row="18" column="0" colspan="2">
-             <widget class="QCheckBox" name="benifPersonBox">
+            <item row="21" column="0">
+             <widget class="QCheckBox" name="flagAttentionCheck">
               <property name="text">
-               <string>Is benificiary a person?</string>
+               <string>Flag for attention</string>
               </property>
              </widget>
             </item>
-            <item row="9" column="2">
-             <widget class="QLineEdit" name="dayEdit">
+            <item row="21" column="1" colspan="3">
+             <widget class="QLineEdit" name="attentionNotesEdit">
               <property name="placeholderText">
-               <string>Date</string>
-              </property>
-             </widget>
-            </item>
-            <item row="13" column="2">
-             <widget class="QLineEdit" name="commodCatAEdit">
-              <property name="placeholderText">
-               <string>General</string>
-              </property>
-             </widget>
-            </item>
-            <item row="13" column="3">
-             <widget class="QLineEdit" name="commodCatBEdit">
-              <property name="placeholderText">
-               <string>Specific</string>
-              </property>
-             </widget>
-            </item>
-            <item row="15" column="2">
-             <widget class="QLineEdit" name="toJobCatAEdit">
-              <property name="placeholderText">
-               <string>Sector</string>
-              </property>
-             </widget>
-            </item>
-            <item row="15" column="3">
-             <widget class="QLineEdit" name="toJobCatBEdit">
-              <property name="placeholderText">
-               <string>Occupation</string>
-              </property>
-             </widget>
-            </item>
-            <item row="17" column="2">
-             <widget class="QLineEdit" name="fromJobCatAEdit">
-              <property name="placeholderText">
-               <string>Sector</string>
-              </property>
-             </widget>
-            </item>
-            <item row="17" column="3">
-             <widget class="QLineEdit" name="fromJobCatBEdit">
-              <property name="placeholderText">
-               <string>Occupation</string>
+               <string>Query or note</string>
               </property>
              </widget>
             </item>
@@ -423,6 +513,9 @@
        <widget class="QPushButton" name="saveEntryButton">
         <property name="enabled">
          <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Save database [Ctrl+S]</string>
         </property>
         <property name="text">
          <string>&amp;Save database</string>
@@ -475,6 +568,13 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
+  <tabstop>newDatabaseButton</tabstop>
+  <tabstop>openDatabaseButton</tabstop>
+  <tabstop>newEntryButton</tabstop>
+  <tabstop>saveEntryButton</tabstop>
+  <tabstop>deleteEntryButton</tabstop>
+  <tabstop>entriesTable</tabstop>
+  <tabstop>scrollArea</tabstop>
   <tabstop>repoComboBox</tabstop>
   <tabstop>userEntryEdit</tabstop>
   <tabstop>dateEntryEdit</tabstop>
@@ -495,9 +595,6 @@
   <tabstop>shillingsEdit</tabstop>
   <tabstop>penceEdit</tabstop>
   <tabstop>penceTotalEdit</tabstop>
-  <tabstop>descriptionTextEdit</tabstop>
-  <tabstop>commodCatAEdit</tabstop>
-  <tabstop>commodCatBEdit</tabstop>
   <tabstop>toForenameEdit</tabstop>
   <tabstop>toSurnameEdit</tabstop>
   <tabstop>toJobCatAEdit</tabstop>
@@ -510,13 +607,11 @@
   <tabstop>benifForenameEdit</tabstop>
   <tabstop>benifSurnameEdit</tabstop>
   <tabstop>benifNotesEdit</tabstop>
-  <tabstop>newDatabaseButton</tabstop>
-  <tabstop>openDatabaseButton</tabstop>
-  <tabstop>newEntryButton</tabstop>
-  <tabstop>saveEntryButton</tabstop>
-  <tabstop>deleteEntryButton</tabstop>
-  <tabstop>entriesTable</tabstop>
-  <tabstop>scrollArea</tabstop>
+  <tabstop>commodCatAEdit</tabstop>
+  <tabstop>commodCatBEdit</tabstop>
+  <tabstop>descriptionTextEdit</tabstop>
+  <tabstop>flagAttentionCheck</tabstop>
+  <tabstop>attentionNotesEdit</tabstop>
  </tabstops>
  <resources/>
  <connections/>

@@ -92,6 +92,8 @@ void MainWindow::setupModel()
     mapper->addMapping(ui->benifForenameEdit, model->fieldIndex("benificiaryForename"));
     mapper->addMapping(ui->benifSurnameEdit, model->fieldIndex("benificiarySurname"));
     mapper->addMapping(ui->benifNotesEdit, model->fieldIndex("benificaryNotes"));
+    mapper->addMapping(ui->flagAttentionCheck, model->fieldIndex("attentionFlag"));
+    mapper->addMapping(ui->attentionNotesEdit, model->fieldIndex("attentionNote"));
 
     mapper->toFirst();
     model->select();
@@ -100,7 +102,7 @@ void MainWindow::setupModel()
 
 void MainWindow::on_newDatabaseButton_clicked()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Open Database"), QDir::currentPath(), tr("SQLite Database Files (*.db)"));
+    QString fileName = QFileDialog::getSaveFileName(this, tr("New Database"), QDir::currentPath(), tr("SQLite Database Files (*.db)"));
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(fileName);
     if (fileName != NULL)
@@ -115,50 +117,9 @@ void MainWindow::on_newDatabaseButton_clicked()
         }
 
         setWindowTitle("Small Bills and Petty Finance DB Editor: "+fileName);
-        ui->newEntryButton->setEnabled(true);
-        ui->saveEntryButton->setEnabled(true);
-        ui->deleteEntryButton->setEnabled(true);
+        toggleVisible(true);
 
         QSqlQuery query(db);
-
-        /*****************************************
-         * table recipts
-         * id int primary key
-         * repository (subtable)
-         * enteredBy varchar(32)
-         * entryDate
-         * bundleRef varchar(8)
-         * itemNum unsigned int
-         * entryNum unsigned int
-         * docType (subtable)
-         * docDesc (subtable)
-         * consRequired tinyint(1)
-         * consNotes varchar(256)
-         * allManuscript tinyint(1)
-         * printedHeader tinyint(1)
-         * containsImage tinyint(1)
-         * year unsigned int
-         * month unsigned int
-         * day unsigned int
-         * pounds unsigned int
-         * shillings unsigned int
-         * pence unsigned int
-         * description varchar(1000)
-         * commodityCatA (subtable)
-         * commodityCatB (subtable)
-         * paidToForename varchar(32)
-         * paidToSurname varchar(32)
-         * paidToJobA (subtable)
-         * paidToJobB (subtable)
-         * paidByForename varchar(32)
-         * paidBySurname varchar(32)
-         * paidByJobA (subtable)
-         * paidByJobB (subtable)
-         * isBenificiaryPerson tinyint(1)
-         * benificiaryForname varchar(32)
-         * benicifiarySurname varchar(32)
-         * benificaryNotes varchar(256)
-         ****************************************/
 
         query.exec("DROP TABLE IF EXISTS receipts;");
         query.exec("CREATE table receipts "
@@ -196,7 +157,9 @@ void MainWindow::on_newDatabaseButton_clicked()
                    "isBenificiaryPerson INT, "
                    "benificiaryForename TEXT, "
                    "benicifiarySurname TEXT, "
-                   "benificaryNotes TEXT);"
+                   "benificaryNotes TEXT,"
+                   "attentionFlag INT,"
+                   "attentionNote TEXT);"
                    );
         // Create repos table
         query.exec("DROP TABLE IF EXISTS reposID;");
@@ -216,9 +179,11 @@ void MainWindow::on_newDatabaseButton_clicked()
         // CREATE docDesc table
         query.exec("DROP TABLE IF EXISTS docDescID;");
         query.exec("CREATE table docDescID (id int, desc text);");
-        query.exec("INSERT into docDescID values(100, 'Other');");
-        query.exec("INSERT into docDescID values(102, 'Single page');");
-        query.exec("INSERT into docDescID values(103, 'Multi page');");
+        query.exec("INSERT into docDescID values(100, 'Letter');");
+        query.exec("INSERT into docDescID values(102, 'Receipt');");
+        query.exec("INSERT into docDescID values(103, 'Poster');");
+        query.exec("INSERT into docDescID values(104, 'Printed bill);");
+        query.exec("INSERT into docDescID values(105, 'Other');");
 
         // CREATE month table
         query.exec("DROP TABLE IF EXISTS monthID;");
@@ -232,7 +197,7 @@ void MainWindow::on_newDatabaseButton_clicked()
         query.exec("INSERT into monthID values(106, 'June');");
         query.exec("INSERT into monthID values(107, 'July');");
         query.exec("INSERT into monthID values(108, 'August');");
-        query.exec("INSERT into monthID values(109, 'September');");
+        query.exec("INSERT into monthIDsetupModel values(109, 'September');");
         query.exec("INSERT into monthID values(110, 'October');");
         query.exec("INSERT into monthID values(111, 'November');");
         query.exec("INSERT into monthID values(112, 'December');");
@@ -257,14 +222,27 @@ void MainWindow::clearEntries()
     ui->descriptionTextEdit->clear();
     ui->docDescBox->clear();
     ui->docTypeComboBox->clear();
+
+    //Don't remove the entry, but increment
+    QString entryText = ui->entryNumEdit->text();
+    int entryNum = entryText.toInt();
+    entryNum++;
+    entryText = QString::number(entryNum);
     ui->entryNumEdit->clear();
+    ui->entryNumEdit->setText(entryText);
+
     ui->fromForenameEdit->clear();
     ui->fromSurnameEdit->clear();
     ui->fromJobCatAEdit->clear();
     ui->fromJobCatBEdit->clear();
     ui->headerBox->setChecked(false);
     ui->imageBox->setChecked(false);
+
+    // Don't remove the item
+    QString itemText = ui->itemNumEdit->text();
     ui->itemNumEdit->clear();
+    ui->itemNumEdit->setText(itemText);
+
     ui->manuBox->setChecked(false);
     ui->monthComboBox->clear();
     ui->penceEdit->clear();
@@ -278,6 +256,16 @@ void MainWindow::clearEntries()
     ui->toSurnameEdit->clear();
     ui->userEntryEdit->clear();
     ui->yearEdit->clear();
+    ui->flagAttentionCheck->setChecked(false);
+    ui->attentionNotesEdit->clear();
+}
+
+void MainWindow::toggleVisible(bool toggle)
+{
+    ui->newEntryButton->setEnabled(toggle);
+    ui->saveEntryButton->setEnabled(toggle);
+    ui->deleteEntryButton->setEnabled(toggle);
+    ui->scrollArea->setEnabled(toggle);
 }
 
 void MainWindow::on_newEntryButton_clicked()
@@ -320,9 +308,7 @@ void MainWindow::on_openDatabaseButton_clicked()
 
         QSqlQuery query(db);
         setWindowTitle("Small Bills and Petty Finance DB Editor: "+fileName);
-        ui->newEntryButton->setEnabled(true);
-        ui->saveEntryButton->setEnabled(true);
-        ui->deleteEntryButton->setEnabled(true);
+        toggleVisible(true);
         setupModel();
     }
     else

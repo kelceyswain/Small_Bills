@@ -23,6 +23,7 @@ public:
 
 private slots:
     void clearEntries();
+    void toggleVisible(bool toggle);
     void on_newDatabaseButton_clicked();
     void on_newEntryButton_clicked();
     void on_entriesTable_clicked(const QModelIndex &index);
