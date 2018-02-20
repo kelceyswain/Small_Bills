@@ -40,6 +40,10 @@ private slots:
 
     void on_penceEdit_editingFinished();
 
+    void on_toJobCatACombo_currentIndexChanged(const QString &arg1);
+
+    void on_fromJobCatACombo_currentIndexChanged(const QString &arg1);
+
 private:
     void setupModel();
     Ui::MainWindow *ui;
@@ -50,6 +54,9 @@ private:
     int typeIndexDocType;
     int typeIndexDocDesc;
     int typeIndexMonth;
+    QStringList sectorList;
+    QStringList toOccupationList;
+    QStringList fromOccupationList;
 };
 
 #endif // MAINWINDOW_H
