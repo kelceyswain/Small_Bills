@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    sectorList << "Agriculture/fishing" << "Mining" << "Building" << "Manufacturing" << "Transport" << "Dealing" << "Industrial service" << "Domestic service" << "Public service/professional" << "Rentier" << "Other";
+    sectorList << "Other" << "Agriculture/fishing" << "Mining" << "Building" << "Manufacturing" << "Transport" << "Dealing" << "Industrial service" << "Domestic service" << "Public service/professional" << "Rentier";
     ui->toJobCatACombo->addItems(sectorList);
     ui->fromJobCatACombo->addItems(sectorList);
 }
@@ -151,7 +151,7 @@ void MainWindow::on_newDatabaseButton_clicked()
                    "commodityCatB INT, "
                    "paidToForename TEXT, "
                    "paidToSurname TEXT, "
-                   "paidByJobFree TEXT, "
+                   "paidToJobFree TEXT, "
                    "paidToJobA TEXT, "
                    "paidToJobB TEXT, "
                    "paidByForename TEXT, "
@@ -241,8 +241,11 @@ void MainWindow::clearEntries()
     ui->fromSurnameEdit->clear();
     ui->fromJobFreeEdit->clear();
     ui->fromJobCatACombo->clear();
-    ui->fromJobCatACombo->addItems(sectorList);
+    ui->fromJobCatACombo->addItems(sectorList);    
+    fromOccupationList.clear();
     ui->fromJobCatBCombo->clear();
+    ui->fromJobCatBCombo->addItems(fromOccupationList);
+
     ui->headerBox->setChecked(false);
     ui->imageBox->setChecked(false);
 
@@ -262,7 +265,9 @@ void MainWindow::clearEntries()
     ui->toJobFreeEdit->clear();
     ui->toJobCatACombo->clear();
     ui->toJobCatACombo->addItems(sectorList);
+    toOccupationList.clear();
     ui->toJobCatBCombo->clear();
+    ui->toJobCatBCombo->addItems(toOccupationList);
     ui->toSurnameEdit->clear();
     ui->userEntryEdit->clear();
     ui->yearEdit->clear();
@@ -363,28 +368,28 @@ void MainWindow::on_penceEdit_editingFinished()
 void MainWindow::on_toJobCatACombo_currentIndexChanged(const QString &arg1)
 {
     //Agriculture/fishing
-    if (arg1 == sectorList[0])
+    if (arg1 == sectorList[1])
     {
         toOccupationList.clear();
-        toOccupationList << "Farming/land service" << "Breeding" << "Fishing";
+        toOccupationList << "" << "Farming/land service" << "Breeding" << "Fishing";
         ui->toJobCatBCombo->clear();
         ui->toJobCatBCombo->addItems(toOccupationList);
     }
     // Mining (see else)
 
     // Building
-    else if (arg1 == sectorList[2])
+    else if (arg1 == sectorList[3])
     {
         toOccupationList.clear();
-        toOccupationList << "Management" << "Operative" << "Road-making";
+        toOccupationList << "" << "Management" << "Operative" << "Road-making";
         ui->toJobCatBCombo->clear();
         ui->toJobCatBCombo->addItems(toOccupationList);
      }
     // Manufacturing
-    else if (arg1 == sectorList[3])
+    else if (arg1 == sectorList[4])
     {
         toOccupationList.clear();
-        toOccupationList << "Machinery" << "Tools" << "Ship-building" << "Iron and steel" << "Copper tin and lead" << "Gold silver and jewels" << "Earthenware" << "Coal and gas";
+        toOccupationList << "" << "Machinery" << "Tools" << "Ship-building" << "Iron and steel" << "Copper tin and lead" << "Gold silver and jewels" << "Earthenware" << "Coal and gas";
         toOccupationList << "Chemical" << "Fur and leather" << "Glue and tallow" << "Hair" << "Wood workers" << "Furniture" << "Coaches" << "Paper" << "Floorcloth" << "Woollens";
         toOccupationList << "Cottons and silk" << "Flax and hemp" << "Lace" << "Dyeing" << "Dress" << "Dress sundries" << "Food preparation" << "Baking" << "Drink preparation";
         toOccupationList << "Smoking" << "Watches and instruments" << "Printing" << "Unspecified";
@@ -392,53 +397,53 @@ void MainWindow::on_toJobCatACombo_currentIndexChanged(const QString &arg1)
         ui->toJobCatBCombo->addItems(toOccupationList);
     }
     // Transport
-    else if (arg1 == sectorList[4])
+    else if (arg1 == sectorList[5])
     {
         toOccupationList.clear();
-        toOccupationList << "Warehouses" << "Maritime navigation" << "Inland navigation" << "Railways" << "Roads";
+        toOccupationList << "" << "Warehouses" << "Maritime navigation" << "Inland navigation" << "Railways" << "Roads";
         ui->toJobCatBCombo->clear();
         ui->toJobCatBCombo->addItems(toOccupationList);
     }
     // Dealing
-    else if (arg1 == sectorList[5])
+    else if (arg1 == sectorList[6])
     {
         toOccupationList.clear();
-        toOccupationList << "Coal" << "Raw materials" << "Clothing materials" << "Dress" << "Food" << "Tobacco" << "Wines spirits and hotels" << "Coffee" << "Furniture";
+        toOccupationList << "" << "Coal" << "Raw materials" << "Clothing materials" << "Dress" << "Food" << "Tobacco" << "Wines spirits and hotels" << "Coffee" << "Furniture";
         toOccupationList << "Stationery" << "Household utensils" << "General dealers" << "Unspecified dealers";
         ui->toJobCatBCombo->clear();
         ui->toJobCatBCombo->addItems(toOccupationList);
     }
     // Industrial service
-    else if (arg1 == sectorList[6])
+    else if (arg1 == sectorList[7])
     {
         toOccupationList.clear();
-        toOccupationList << "Accountants and clerks" << "Labourers";
+        toOccupationList << "" << "Accountants and clerks" << "Labourers";
         ui->toJobCatBCombo->clear();
         ui->toJobCatBCombo->addItems(toOccupationList);
     }
     // Domestic service
-    else if (arg1 == sectorList[7])
+    else if (arg1 == sectorList[8])
     {
         toOccupationList.clear();
-        toOccupationList << "Indoor service" << "Outdoor service" << "Other services";
+        toOccupationList << "" << "Indoor service" << "Outdoor service" << "Other services";
         ui->toJobCatBCombo->clear();
         ui->toJobCatBCombo->addItems(toOccupationList);
     }
     // Public service/professional
-    else if (arg1 == sectorList[8])
+    else if (arg1 == sectorList[9])
     {
         toOccupationList.clear();
-        toOccupationList << "Central administration" << "Local administration" << "Army" << "Navy" << "Police and prison service" << "Law" << "Medicine" << "Graphic arts";
+        toOccupationList << "" << "Central administration" << "Local administration" << "Army" << "Navy" << "Police and prison service" << "Law" << "Medicine" << "Graphic arts";
         toOccupationList << "Performing arts" << "Literature" << "Science" << "Education" << "Religion";
         ui->toJobCatBCombo->clear();
         ui->toJobCatBCombo->addItems(toOccupationList);
 
     }
     // Rentier
-    else if (arg1 == sectorList[9])
+    else if (arg1 == sectorList[10])
     {
         toOccupationList.clear();
-        toOccupationList << "Miscellaneous status" << "Gentry" << "Esquires" << "Knights and baronets" << "Aristocracy";
+        toOccupationList << "" << "Miscellaneous status" << "Gentry" << "Esquires" << "Knights and baronets" << "Aristocracy";
         ui->toJobCatBCombo->clear();
         ui->toJobCatBCombo->addItems(toOccupationList);
     }
@@ -454,28 +459,28 @@ void MainWindow::on_toJobCatACombo_currentIndexChanged(const QString &arg1)
 void MainWindow::on_fromJobCatACombo_currentIndexChanged(const QString &arg1)
 {
     //Agriculture/fishing
-    if (arg1 == sectorList[0])
+    if (arg1 == sectorList[1])
     {
         fromOccupationList.clear();
-        fromOccupationList << "Farming/land service" << "Breeding" << "Fishing";
+        fromOccupationList << "" << "Farming/land service" << "Breeding" << "Fishing";
         ui->fromJobCatBCombo->clear();
         ui->fromJobCatBCombo->addItems(fromOccupationList);
     }
     // Mining (see else)
 
     // Building
-    else if (arg1 == sectorList[2])
+    else if (arg1 == sectorList[3])
     {
         fromOccupationList.clear();
-        fromOccupationList << "Management" << "Operative" << "Road-making";
+        fromOccupationList << "" << "Management" << "Operative" << "Road-making";
         ui->fromJobCatBCombo->clear();
         ui->fromJobCatBCombo->addItems(fromOccupationList);
      }
     // Manufacturing
-    else if (arg1 == sectorList[3])
+    else if (arg1 == sectorList[4])
     {
         fromOccupationList.clear();
-        fromOccupationList << "Machinery" << "Tools" << "Ship-building" << "Iron and steel" << "Copper tin and lead" << "Gold silver and jewels" << "Earthenware" << "Coal and gas";
+        fromOccupationList << "" << "Machinery" << "Tools" << "Ship-building" << "Iron and steel" << "Copper tin and lead" << "Gold silver and jewels" << "Earthenware" << "Coal and gas";
         fromOccupationList << "Chemical" << "Fur and leather" << "Glue and tallow" << "Hair" << "Wood workers" << "Furniture" << "Coaches" << "Paper" << "Floorcloth" << "Woollens";
         fromOccupationList << "Cottons and silk" << "Flax and hemp" << "Lace" << "Dyeing" << "Dress" << "Dress sundries" << "Food preparation" << "Baking" << "Drink preparation";
         fromOccupationList << "Smoking" << "Watches and instruments" << "Printing" << "Unspecified";
@@ -483,53 +488,53 @@ void MainWindow::on_fromJobCatACombo_currentIndexChanged(const QString &arg1)
         ui->fromJobCatBCombo->addItems(fromOccupationList);
     }
     // Transport
-    else if (arg1 == sectorList[4])
+    else if (arg1 == sectorList[5])
     {
         fromOccupationList.clear();
-        fromOccupationList << "Warehouses" << "Maritime navigation" << "Inland navigation" << "Railways" << "Roads";
+        fromOccupationList << "" << "Warehouses" << "Maritime navigation" << "Inland navigation" << "Railways" << "Roads";
         ui->fromJobCatBCombo->clear();
         ui->fromJobCatBCombo->addItems(fromOccupationList);
     }
     // Dealing
-    else if (arg1 == sectorList[5])
+    else if (arg1 == sectorList[6])
     {
         fromOccupationList.clear();
-        fromOccupationList << "Coal" << "Raw materials" << "Clothing materials" << "Dress" << "Food" << "Tobacco" << "Wines spirits and hotels" << "Coffee" << "Furniture";
+        fromOccupationList << "" << "Coal" << "Raw materials" << "Clothing materials" << "Dress" << "Food" << "Tobacco" << "Wines spirits and hotels" << "Coffee" << "Furniture";
         fromOccupationList << "Stationery" << "Household utensils" << "General dealers" << "Unspecified dealers";
         ui->fromJobCatBCombo->clear();
         ui->fromJobCatBCombo->addItems(fromOccupationList);
     }
     // Industrial service
-    else if (arg1 == sectorList[6])
+    else if (arg1 == sectorList[7])
     {
         fromOccupationList.clear();
-        fromOccupationList << "Accountants and clerks" << "Labourers";
+        fromOccupationList << "" << "Accountants and clerks" << "Labourers";
         ui->fromJobCatBCombo->clear();
         ui->fromJobCatBCombo->addItems(fromOccupationList);
     }
     // Domestic service
-    else if (arg1 == sectorList[7])
+    else if (arg1 == sectorList[8])
     {
         fromOccupationList.clear();
-        fromOccupationList << "Indoor service" << "Outdoor service" << "Other services";
+        fromOccupationList << "" << "Indoor service" << "Outdoor service" << "Other services";
         ui->fromJobCatBCombo->clear();
         ui->fromJobCatBCombo->addItems(fromOccupationList);
     }
     // Public service/professional
-    else if (arg1 == sectorList[8])
+    else if (arg1 == sectorList[9])
     {
         fromOccupationList.clear();
-        fromOccupationList << "Central administration" << "Local administration" << "Army" << "Navy" << "Police and prison service" << "Law" << "Medicine" << "Graphic arts";
+        fromOccupationList << "" << "Central administration" << "Local administration" << "Army" << "Navy" << "Police and prison service" << "Law" << "Medicine" << "Graphic arts";
         fromOccupationList << "Performing arts" << "Literature" << "Science" << "Education" << "Religion";
         ui->fromJobCatBCombo->clear();
         ui->fromJobCatBCombo->addItems(fromOccupationList);
 
     }
     // Rentier
-    else if (arg1 == sectorList[9])
+    else if (arg1 == sectorList[10])
     {
         fromOccupationList.clear();
-        fromOccupationList << "Miscellaneous status" << "Gentry" << "Esquires" << "Knights and baronets" << "Aristocracy";
+        fromOccupationList << "" << "Miscellaneous status" << "Gentry" << "Esquires" << "Knights and baronets" << "Aristocracy";
         ui->fromJobCatBCombo->clear();
         ui->fromJobCatBCombo->addItems(fromOccupationList);
     }
