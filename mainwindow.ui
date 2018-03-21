@@ -523,7 +523,7 @@
       <item row="0" column="0">
        <widget class="QPushButton" name="newDatabaseButton">
         <property name="text">
-         <string>New database...</string>
+         <string>New file...</string>
         </property>
        </widget>
       </item>
@@ -546,7 +546,7 @@
       <item row="0" column="1">
        <widget class="QPushButton" name="openDatabaseButton">
         <property name="text">
-         <string>Open database...</string>
+         <string>Open file...</string>
         </property>
        </widget>
       </item>
@@ -555,7 +555,7 @@
     <item row="1" column="0">
      <widget class="QLabel" name="label_10">
       <property name="text">
-       <string>Copyright © 2018 Larchwood Research</string>
+       <string>(L)GPL v3 license</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -583,6 +583,16 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionNew_File">
+   <property name="text">
+    <string>New file...</string>
+   </property>
+  </action>
+  <action name="actionOpen_File">
+   <property name="text">
+    <string>Open file...</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
