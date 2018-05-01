@@ -188,7 +188,7 @@ void MainWindow::on_newDatabaseButton_clicked()
         query.exec("INSERT into docDescID values(100, 'Letter');");
         query.exec("INSERT into docDescID values(102, 'Receipt');");
         query.exec("INSERT into docDescID values(103, 'Poster');");
-        query.exec("INSERT into docDescID values(104, 'Printed bill);");
+        query.exec("INSERT into docDescID values(104, 'Printed bill');");
         query.exec("INSERT into docDescID values(105, 'Other');");
 
         // CREATE month table
